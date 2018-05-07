@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+  xmlns:ui="nativescript-permissions">
+  <StackLayout class="p-20">
+    <!-- Location Permissions -->
+    <Label text="{{ location.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Label text="Current location :" class="t-20 text-center c-black" textWrap="true"/>
+    <Label text="{{ location.coords }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Request Location Permission" tap="{{ requestLocationPermissions }}"/> 
+
+    <!-- Camera Permissions -->
+    <Label text="{{ camera.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Request Camera Permission" tap="{{ requestCameraPermission }}"/> 
+
+    <!-- Files Permissions -->
+    <Label text="{{ files.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Request File Permission" tap="{{ requestFilesPermission }}"/> 
+
+    <label text="Open Application settings" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Open App Settings" tap="{{ goToSettings }}"/>
+
+    <Button text="Request Multiple Permissions" tap="{{ requestMultiplePermissions }}"/> 
+  </StackLayout>
+</Page> 
