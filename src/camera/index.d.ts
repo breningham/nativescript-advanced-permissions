@@ -1,4 +1,4 @@
 
-export function requestCameraPermission() : Promise<boolean>;
+export function requestCameraPermissions() : Promise<boolean>;
 
-export function hasCameraPermission() : boolean;
+export function hasCameraPermissions() : boolean;

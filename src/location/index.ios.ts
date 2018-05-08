@@ -37,7 +37,7 @@ function getLocationAuthorizationStatus(): number {
 }
 
 function isLocationAuthorized(): boolean {
-    let status: any = this.getLocationAuthorizationStatus();
+    let status: any = getLocationAuthorizationStatus();
     return status === CLAuthorizationStatus.kCLAuthorizationStatusAuthorized || status === CLAuthorizationStatus.kCLAuthorizationStatusAuthorizedWhenInUse;
 }
 
@@ -45,8 +45,8 @@ export function hasLocationPermissions() {
     return isLocationEnabled() && isLocationAuthorized();
 }
 
-export function requestLocationPermission(always: boolean = false) {
-    let status: number = this.getLocationAuthorizationStatus();
+export function requestLocationPermissions(always: boolean = false) {
+    let status: number = getLocationAuthorizationStatus();
     let requestType = always ? 'requestWhenInUseAuthorization' : 'requestAlwaysAuthorization';
 
     if (status !== CLAuthorizationStatus.kCLAuthorizationStatusNotDetermined) {

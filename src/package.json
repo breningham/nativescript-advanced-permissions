@@ -2,7 +2,7 @@
   "name": "nativescript-advanced-permissions",
   "version": "1.0.0",
   "description": "Permissions for both Android and IOS.",
-  "main": "permissions",
+  "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
@@ -22,9 +22,10 @@
     "demo.ios": "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
     "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
     "demo.reset": "cd ../demo && rimraf platforms",
-    "plugin.prepare": "npm run build && cd ../demo && tns plugin remove nativescript-advanced-permissions && tns plugin add ../src",
+    "plugin.prepare": "npm run build && npm run package && cd ../demo && tns plugin remove nativescript-advanced-permissions && tns plugin add ../publish/package/*.tgz && tns install",
     "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
-    "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
+    "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
+    "package": "cd ../publish && rimraf ./package && ./pack.sh"
   },
   "keywords": [
     "NativeScript",

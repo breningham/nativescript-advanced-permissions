@@ -3,5 +3,5 @@ export declare const RequestType: {
     ALWAYS: string;
 };
 export declare function hasLocationPermissions(): boolean;
-export declare function requestLocationPermission(always?: boolean): Promise<boolean>;
+export declare function requestLocationPermissions(always?: boolean): Promise<boolean>;
 export declare function isLocationEnabled(): boolean;

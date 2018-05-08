@@ -1,15 +1,15 @@
-import { requestPermission, hasPermission, getContext } from '../core/index.android';
+import { requestPermission, hasPermission, getContext } from '../core';
 
 export const LOCATION_PERMISSIONS = [
     (android as any).Manifest.permission.ACCESS_FINE_LOCATION,
     (android as any).Manifest.permission.ACCESS_COARSE_LOCATION,
 ];
 
-export function hasLocationPermission() {
+export function hasLocationPermissions() {
     return hasPermission( LOCATION_PERMISSIONS );
 }
 
-export function requestLocationPermission( unusedOnAndroid: null, reason?: string ) {
+export function requestLocationPermissions( unusedOnAndroid: null, reason?: string ) {
     return requestPermission( LOCATION_PERMISSIONS, reason );
 }
 

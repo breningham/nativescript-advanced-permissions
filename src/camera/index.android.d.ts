@@ -1,2 +1,2 @@
-export declare function requestCameraPermission(): any;
-export declare function hasCameraPermission(): boolean;
+export declare function requestCameraPermissions(reason?: string): any;
+export declare function hasCameraPermissions(): any;

@@ -15,6 +15,9 @@
     <Label text="{{ files.message }}" class="t-20 text-center c-black" textWrap="true"/>
     <Button text="Request File Permission" tap="{{ requestFilesPermission }}"/> 
 
+    <Label text="{{ calendar.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Request Calendar Permissions" tap="{{ requestCalendarPermissions }}"/> 
+
     <label text="Open Application settings" class="t-20 text-center c-black" textWrap="true"/>
     <Button text="Open App Settings" tap="{{ goToSettings }}"/>
 

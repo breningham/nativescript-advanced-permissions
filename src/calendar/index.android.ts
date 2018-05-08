@@ -1,4 +1,4 @@
-import { requestPermission, hasPermission } from '../core/index.android';
+import { requestPermission, hasPermission } from '../core';
 
 const CALENDAR_PERMISSIONS = [
     (android as any).Manifest.permission.WRITE_CALENDAR,

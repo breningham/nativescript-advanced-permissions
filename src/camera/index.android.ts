@@ -1,11 +1,11 @@
-import { requestPermission, hasPermission } from '../core/index.android';
+import { requestPermission, hasPermission } from '../core';
 
 const CAMERA_PERMISSIONS = (android as any).Manifest.permission.CAMERA;
 
-export function requestCameraPermission() {
-    return this.requestPermission( CAMERA_PERMISSIONS );
+export function requestCameraPermissions(reason?: string) {
+    return requestPermission( CAMERA_PERMISSIONS );
 }
 
-export function hasCameraPermission() {
+export function hasCameraPermissions() {
     return hasPermission( CAMERA_PERMISSIONS );
 }

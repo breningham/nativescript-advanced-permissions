@@ -15,14 +15,14 @@ export function getCameraAuthorizationStatus(): number {
 }
 
 export function isCameraAuthorized(): boolean {
-    return this.getCameraAuthorizationStatus() === AVAuthorizationStatus.Authorized;
+    return getCameraAuthorizationStatus() === AVAuthorizationStatus.Authorized;
 }
 
-export function hasCameraPermission(): boolean {
-    return this.isCameraPresent() && this.isCameraAuthorized();
+export function hasCameraPermissions(): boolean {
+    return isCameraPresent() && isCameraAuthorized();
 }
 
-export function requestCameraPermission(): Promise<boolean> {
+export function requestCameraPermissions(): Promise<boolean> {
     return new Promise((resolve) => {
         AVCaptureDevice.requestAccessForMediaTypeCompletionHandler(AVMediaTypeVideo, resolve);
     });

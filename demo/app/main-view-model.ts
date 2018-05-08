@@ -1,16 +1,10 @@
 import { Observable } from 'tns-core-modules/data/observable';
 
 import { openAppSettings } from 'nativescript-advanced-permissions/core';
-import { 
-  requestCalendarPermissions,
-  hasCalendarPermissions,
-  requestFilePermissions,
-  hasFilePermissions,
-  requestCameraPermission,
-  hasCameraPermission,
-  requestLocationPermission, 
-  hasLocationPermissions
-} from 'nativescript-advanced-permissions';
+import { requestCameraPermissions, hasCameraPermissions } from 'nativescript-advanced-permissions/camera';
+import { hasLocationPermissions, isLocationEnabled, requestLocationPermissions } from 'nativescript-advanced-permissions/location';
+import { hasCalendarPermissions, requestCalendarPermissions } from 'nativescript-advanced-permissions/calendar';
+import { requestFilePermissions, hasFilePermissions } from 'nativescript-advanced-permissions/files';
 
 
 import { isIOS } from 'tns-core-modules/platform';
@@ -24,6 +18,7 @@ export class HelloWorldModel extends Observable {
   location: Observable = new Observable();
   camera: Observable = new Observable();
   files: Observable = new Observable();
+  calendar: Observable = new Observable();
 
   LOCATION_MESSAGES: {
     GRANTED: string,
@@ -49,6 +44,14 @@ export class HelloWorldModel extends Observable {
     DENIED: 'File Permissions Denied'
   };
 
+  CALENDAR_MESSAGES: {
+    GRANTED: string,
+    DENIED: string
+  } = {
+    GRANTED: 'Calendar Permissions Granted',
+    DENIED: 'Calendar Permisions Denied'
+  };
+
 
   constructor() {
     super();
@@ -57,16 +60,18 @@ export class HelloWorldModel extends Observable {
     this.location.set('hasPermission', hasLocationPermissions());
     this.location.set('coords', '0, 0');
 
-    this.camera.set('hasPermission', hasCameraPermission());
-    this.camera.set('message', hasCameraPermission() ? this.CAMERA_MESSAGES.GRANTED : this.CAMERA_MESSAGES.DENIED);
+    this.camera.set('hasPermission', hasCameraPermissions());
+    this.camera.set('message', hasCameraPermissions() ? this.CAMERA_MESSAGES.GRANTED : this.CAMERA_MESSAGES.DENIED);
 
     this.files.set('message', hasFilePermissions() ? this.FILES_MESSAGES.GRANTED : this.FILES_MESSAGES.DENIED);
+
+    this.calendar.set('message', hasCalendarPermissions() ? this.CALENDAR_MESSAGES.GRANTED : this.CALENDAR_MESSAGES.DENIED);
   }
 
   requestLocationPermissions() {
     console.log('requestLocationPermissions START');
     console.log('requesting location permission');
-    requestLocationPermission().then((hasPermission) => {
+    requestLocationPermissions().then((hasPermission) => {
       console.log(`permission ${hasPermission ? 'granted' : 'denied'}`);
       this.location.set('hasPermission', hasPermission);
       this.location.set('message', hasPermission ? this.LOCATION_MESSAGES.GRANTED : this.LOCATION_MESSAGES.DENIED);
@@ -80,7 +85,7 @@ export class HelloWorldModel extends Observable {
 
   requestCameraPermission() {
     console.log('requestCameraPermission START');
-    requestCameraPermission().then((hasPermission) => {
+    requestCameraPermissions().then((hasPermission) => {
       console.log(`permission ${hasPermission ? 'granted' : 'denied'}`);
       this.camera.set('message', hasPermission ? this.CAMERA_MESSAGES.GRANTED : this.CAMERA_MESSAGES.DENIED);
     });
@@ -98,6 +103,19 @@ export class HelloWorldModel extends Observable {
     console.log('requestFilesPErmission END');
   }
 
+  requestCalendarPermissions() {
+    console.log('requestCalendarPermissions START');
+    console.log('requesting Calendar permission');
+    requestCalendarPermissions().then((permissionsGranted) => {
+      console.log('request complete do we have permissions? : %s', permissionsGranted ? 'Yes' : 'No' );
+      if ( permissionsGranted ) {
+        this.calendar.set('message', this.CALENDAR_MESSAGES.GRANTED);
+      } else {
+        this.calendar.set('message', this.CALENDAR_MESSAGES.DENIED);
+      }
+    });
+  }
+
   goToSettings() {
     openAppSettings();
   }
@@ -106,9 +124,9 @@ export class HelloWorldModel extends Observable {
 
     let hasLocationPermission = false;
     let hasCameraPermission = false;
-    requestLocationPermission().then((permission) => {
+    requestLocationPermissions().then((permission) => {
       hasLocationPermission = permission;
-      return requestCameraPermission()
+      return requestCameraPermissions();
     }).then((hasPermission) => {
       hasCameraPermission = hasPermission;
       return Promise.resolve([ hasLocationPermission, hasCameraPermission ]);
@@ -123,6 +141,6 @@ export class HelloWorldModel extends Observable {
     }).catch(e => {
       console.log('### FAILED ###');
       console.log(`message: ${JSON.stringify(e, null, 4)}`);
-    })
+    });
   }
 }

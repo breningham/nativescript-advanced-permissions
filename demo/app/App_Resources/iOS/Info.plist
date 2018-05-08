@@ -53,5 +53,9 @@
 	<string> For Requesting the Location</string>
 	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
 	<string> To prove that the Location Permissions work </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> To prove that the Files Permissions work </string>
+	<key>NSCalendarsUsageDescription</key>
+	<string> To prove that the Calendar Permissions work </string>
 </dict>
 </plist>

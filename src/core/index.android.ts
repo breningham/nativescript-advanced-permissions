@@ -18,11 +18,19 @@ export function getContext() {
 }
 
 export function requestPermission(permission: any, reason?: string) {
-    return RequestAndroidPermission( permission, reason );
+    return RequestAndroidPermission( permission, reason ).then(( hasPermissions ) => hasPermissions, err => (err) => {
+        console.log('Permission request Error!');
+        console.log(err);
+        return false;
+    });
 }
 
 export function hasPermission( permission: any ) {
-    return HasAndroidPermission( permission );
+    if ( Array.isArray(permission) ) {
+        return (permission as Array<any>).map( perm => HasAndroidPermission(perm)).every(Boolean);
+    } else {
+        return HasAndroidPermission( permission );
+    }
 }
 
 export function openAppSettings() {
