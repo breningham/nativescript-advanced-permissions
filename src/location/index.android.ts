@@ -1,16 +1,16 @@
 import { requestPermission, hasPermission, getContext } from '../core/index.android';
 
-export enum LocationType {
-    FINE = (android as any).Manifest.permission.ACCESS_FINE_LOCATION,
-    COARSE = (android as any).Manifest.permission.ACCESS_COARSE_LOCATION,
+export const LOCATION_PERMISSIONS = [
+    (android as any).Manifest.permission.ACCESS_FINE_LOCATION,
+    (android as any).Manifest.permission.ACCESS_COARSE_LOCATION,
+];
+
+export function hasLocationPermission() {
+    return hasPermission( LOCATION_PERMISSIONS );
 }
 
-export function hasLocationPermission( type: LocationType ) {
-    return hasPermission( type );
-}
-
-export function requestLocationPermission( type: LocationType , reason?: string ) {
-    return requestPermission( type, reason );
+export function requestLocationPermission( unusedOnAndroid: null, reason?: string ) {
+    return requestPermission( LOCATION_PERMISSIONS, reason );
 }
 
 export function isLocationEnabled() {

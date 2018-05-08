@@ -9,8 +9,8 @@
     }
   },
   "dependencies": {
-    "nativescript-advanced-permissions": "file:../src",
     "lodash": "^4.17.4",
+    "nativescript-advanced-permissions": "file:../src",
     "nativescript-geolocation": "^4.2.0",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "^0.3.4",

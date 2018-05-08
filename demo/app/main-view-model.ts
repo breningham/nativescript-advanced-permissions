@@ -1,10 +1,17 @@
 import { Observable } from 'tns-core-modules/data/observable';
 
 import { openAppSettings } from 'nativescript-advanced-permissions/core';
-import { requestCalendarPermissions, hasCalendarPermissions } from 'nativescript-advanced-permissions/calendar';
-import { requestFilePermissions, hasFilePermissions } from 'nativescript-advanced-permissions/files';
-import { requestCameraPermission, hasCameraPermission } from 'nativescript-advanced-permissions/camera';
-import { requestLocationPermission, hasLocationPermissions } from 'nativescript-advanced-permissions/location';
+import { 
+  requestCalendarPermissions,
+  hasCalendarPermissions,
+  requestFilePermissions,
+  hasFilePermissions,
+  requestCameraPermission,
+  hasCameraPermission,
+  requestLocationPermission, 
+  hasLocationPermissions
+} from 'nativescript-advanced-permissions';
+
 
 import { isIOS } from 'tns-core-modules/platform';
 import { getCurrentLocation, Location } from 'nativescript-geolocation';

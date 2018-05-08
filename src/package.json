@@ -1,7 +1,7 @@
 {
   "name": "nativescript-advanced-permissions",
   "version": "1.0.0",
-  "description": "Your awesome NativeScript plugin.",
+  "description": "Permissions for both Android and IOS.",
   "main": "permissions",
   "typings": "index.d.ts",
   "nativescript": {

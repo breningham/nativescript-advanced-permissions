@@ -1,7 +1,7 @@
-export enum RequestType {
-    WHEN_IN_USE = 'WhenInUse',
-    ALWAYS = 'Always'
-}
+export const RequestType = {
+    WHEN_IN_USE: 'WhenInUse',
+    ALWAYS: 'Always'
+};
 
 let locationManager, locationListener;
 
@@ -45,8 +45,9 @@ export function hasLocationPermissions() {
     return isLocationEnabled() && isLocationAuthorized();
 }
 
-export function requestLocationPermission( type: RequestType = RequestType.WHEN_IN_USE) {
+export function requestLocationPermission(always: boolean = false) {
     let status: number = this.getLocationAuthorizationStatus();
+    let requestType = always ? 'requestWhenInUseAuthorization' : 'requestAlwaysAuthorization';
 
     if (status !== CLAuthorizationStatus.kCLAuthorizationStatusNotDetermined) {
         return Promise.resolve(isLocationAuthorized());
@@ -61,7 +62,7 @@ export function requestLocationPermission( type: RequestType = RequestType.WHEN_
         locationManager.delegate = locationListener;
     }
 
-    locationManager[`request${type}Authorization`]();
+    locationManager[requestType]();
 
     return new Promise((resolve, reject) => {
         locationListener.setupPromise(resolve);
