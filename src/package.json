@@ -25,6 +25,7 @@
     "plugin.prepare": "npm run build && npm run package && cd ../demo && tns plugin remove nativescript-advanced-permissions && tns plugin add ../publish/package/*.tgz && tns install",
     "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'",
+    "ci.preparedemo": "npm run build && npm run package && cd ../demo && tns plugin remove nativescript-advanced-permissions && tns plugin add ../publish/package/*.tgz && tns install",
     "package": "cd ../publish && rimraf ./package && ./pack.sh"
   },
   "keywords": [
