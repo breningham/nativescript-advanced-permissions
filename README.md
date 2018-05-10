@@ -1,5 +1,9 @@
 # nativescript-advanced-permissions
 
+[![npm version](https://badge.fury.io/js/nativescript-advanced-permissions.svg)](https://badge.fury.io/js/nativescript-advanced-permissions)
+
+[![Build Status](https://travis-ci.org/breningham/nativescript-advanced-permissions.svg?branch=master)](https://travis-ci.org/breningham/nativescript-advanced-permissions)
+
 This Plugin is a wrap around Nathanael's nativescript-permissions plugin, while providing IOS Permissions with a matching API.
 
 ## Installation
