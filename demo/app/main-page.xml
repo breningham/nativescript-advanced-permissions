@@ -18,8 +18,11 @@
     <Label text="{{ calendar.message }}" class="t-20 text-center c-black" textWrap="true"/>
     <Button text="Request Calendar Permissions" tap="{{ requestCalendarPermissions }}"/> 
 
-    <label text="Open Application settings" class="t-20 text-center c-black" textWrap="true"/>
-    <Button text="Open App Settings" tap="{{ goToSettings }}"/>
+    <label text="{{ settings.app.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Open App Settings" tap="{{ goToAppSettings }}"/>
+
+    <label text="{{ settings.message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="Open Settings" tap="{{ goToSettings }}"/>
 
     <Button text="Request Multiple Permissions" tap="{{ requestMultiplePermissions }}"/> 
   </StackLayout>

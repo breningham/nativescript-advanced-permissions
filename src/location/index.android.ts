@@ -10,7 +10,9 @@ export function hasLocationPermissions() {
 }
 
 export function requestLocationPermissions( unusedOnAndroid: null, reason?: string ) {
-    return requestPermission( LOCATION_PERMISSIONS, reason );
+    return requestPermission( LOCATION_PERMISSIONS, reason )
+        .then((args: any) =>  Object.keys(args).map((i) => args[i]).every(Boolean))
+        .catch(() => false);
 }
 
 export function isLocationEnabled() {

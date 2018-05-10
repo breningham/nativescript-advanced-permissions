@@ -1,6 +1,6 @@
 import { Observable } from 'tns-core-modules/data/observable';
 
-import { openAppSettings } from 'nativescript-advanced-permissions/core';
+import { openAppSettings, openSettings, openWifiSettings } from 'nativescript-advanced-permissions/core';
 import { requestCameraPermissions, hasCameraPermissions } from 'nativescript-advanced-permissions/camera';
 import { hasLocationPermissions, isLocationEnabled, requestLocationPermissions } from 'nativescript-advanced-permissions/location';
 import { hasCalendarPermissions, requestCalendarPermissions } from 'nativescript-advanced-permissions/calendar';
@@ -19,6 +19,7 @@ export class HelloWorldModel extends Observable {
   camera: Observable = new Observable();
   files: Observable = new Observable();
   calendar: Observable = new Observable();
+  settings: Observable = new Observable();
 
   LOCATION_MESSAGES: {
     GRANTED: string,
@@ -56,6 +57,9 @@ export class HelloWorldModel extends Observable {
   constructor() {
     super();
 
+    const appSettings = new Observable();
+    appSettings.set('message', 'Click the Button Below to Open App Settings');
+
     this.location.set('message', hasLocationPermissions() ? this.LOCATION_MESSAGES.GRANTED : this.LOCATION_MESSAGES.DENIED);
     this.location.set('hasPermission', hasLocationPermissions());
     this.location.set('coords', '0, 0');
@@ -66,6 +70,9 @@ export class HelloWorldModel extends Observable {
     this.files.set('message', hasFilePermissions() ? this.FILES_MESSAGES.GRANTED : this.FILES_MESSAGES.DENIED);
 
     this.calendar.set('message', hasCalendarPermissions() ? this.CALENDAR_MESSAGES.GRANTED : this.CALENDAR_MESSAGES.DENIED);
+    this.settings.set('app', appSettings);
+    this.settings.set('message', 'Click the Button Below to Open Settings');
+
   }
 
   requestLocationPermissions() {
@@ -116,8 +123,20 @@ export class HelloWorldModel extends Observable {
     });
   }
 
+  goToAppSettings() {
+
+    openAppSettings().then(() => {
+      const appSettings = this.settings.get('app');
+
+      appSettings.set('message', 'Welcome back to the application');
+      this.settings.set('app', appSettings);
+    });
+  }
+
   goToSettings() {
-    openAppSettings();
+    openSettings().then(() => {
+      this.settings.set('message', 'Welcome back to the application');
+    });
   }
 
   requestMultiplePermissions() {

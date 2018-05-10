@@ -13,6 +13,6 @@ export function hasFilePermissions(): boolean {
 
 export function requestFilePermissions(): Promise<boolean> {
     return requestPermission( FILE_PERMISSIONS )
-            .then((args: any) => true,
-            (args: any) => false);
+            .then((args: any) =>  Object.keys(args).map((i) => args[i]).every(Boolean))
+            .catch(() => false);
 }

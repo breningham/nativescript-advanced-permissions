@@ -7,5 +7,7 @@ export function requestCameraPermissions(reason?: string) {
 }
 
 export function hasCameraPermissions() {
-    return hasPermission( CAMERA_PERMISSIONS );
+    return hasPermission( CAMERA_PERMISSIONS )
+        .then((args: any) =>  Object.keys(args).map((i) => args[i]).every(Boolean))
+        .catch(() => false);
 }
