@@ -20,15 +20,15 @@ Right now to request the Camera Permissions, we use it like this
 	
 ```javascript
     
-    import { hasCameraPermission, requestCameraPermission } from 'nativescript-advanced-permissions/camera';
+    import { hasCameraPermissions, requestCameraPermissions } from 'nativescript-advanced-permissions/camera';
 
     // also supports 'nativescript-advanced-permissions/files';
     // also supports 'nativescript-advanced-permissions/calendar';
     // also supports 'nativescript-advanced-permissions/location';
 
 
-    if( !hasCameraPermission() ) {
-        requestCameraPermission().then((hasPermission) => {
+    if( !hasCameraPermissions() ) {
+        requestCameraPermissions().then((hasPermission) => {
             if( hasPermission ) {
                 // do something cool
             } else {
