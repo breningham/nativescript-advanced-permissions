@@ -2,7 +2,6 @@
 // EKAuthorizationStatus
 declare const EKEntityTypeEvent;
 
-let eventStore: EKEventStore;
 
 export function getCalendarAuthorizationStatus(): number {
     return EKEventStore.authorizationStatusForEntityType(EKEntityTypeEvent);
@@ -13,6 +12,8 @@ export function hasCalendarPermissions() {
 }
 
 export function requestCalendarPermissions() {
+    let eventStore: EKEventStore;
+
     if (eventStore == null) {
         eventStore = new EKEventStore();
     }

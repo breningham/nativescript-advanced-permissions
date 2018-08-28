@@ -9,7 +9,7 @@
     }
   },
   "dependencies": {
-    "nativescript-advanced-permissions": "file:../publish/package/nativescript-advanced-permissions-1.0.0.tgz",
+    "nativescript-advanced-permissions": "file:../publish/package/nativescript-advanced-permissions-1.2.0.tgz",
     "nativescript-geolocation": "^4.2.0",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "^0.3.4",
