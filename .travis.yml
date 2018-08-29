@@ -3,7 +3,7 @@ matrix:
     - stage: "Lint"
       language: node_js
       os: linux
-      node_js: "6"
+      node_js: "9"
       script: cd src && npm run ci.tslint && npm run ci.preparedemo && cd ../demo && npm run ci.tslint
     - stage: "WebPack"
       os: osx
@@ -11,7 +11,7 @@ matrix:
         - Platform="iOS"
       osx_image: xcode8.3
       language: node_js 
-      node_js: "6"
+      node_js: "9"
       jdk: oraclejdk8
       script: cd demo && npm run build.plugin && npm i && npm run build-ios-bundle
     - language: android
@@ -36,7 +36,7 @@ matrix:
         - Xcode="8.3"
       osx_image: xcode8.3
       language: node_js 
-      node_js: "6"
+      node_js: "9"
       jdk: oraclejdk8
       script: 
         - cd src && npm i && npm run tsc && cd ../demo && tns build ios
@@ -54,7 +54,7 @@ matrix:
       script: cd src && npm run test.android
     - os: osx
       language: node_js
-      node_js: "6"
+      node_js: "9"
       jdk: oraclejdk8
       osx_image: xcode8.3
       script: cd src && npm run test.ios
