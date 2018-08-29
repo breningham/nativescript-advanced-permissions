@@ -42,15 +42,15 @@ export function hasPermission( permission: string ): boolean {
 export function openAppSettings() {
 
     return new Promise((resolve) => {
-        
+
         const onReturnToApp = ({ requestCode, resultCode, intent }: AndroidActivityResultEventData) => {
             console.log(resultCode);
 
             if ( requestCode ===  resultCodes.RETURN_FROM_APP_SETTINGS) {
                 resolve();
             }
-        }
-        
+        };
+
         androidApp.once( AndroidApplication.activityResultEvent, onReturnToApp);
 
         const currentActivity = androidApp.foregroundActivity as android.app.Activity;

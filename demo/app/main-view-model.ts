@@ -127,7 +127,7 @@ export class HelloWorldModel extends Observable {
 
     console.log('User leaving app to App Settings.');
     openAppSettings().then(() => {
-      console.log('User Returned from app settings')
+      console.log('User Returned from app settings');
       const appSettings = this.settings.get('app');
 
       appSettings.set('message', 'Welcome back to the application');

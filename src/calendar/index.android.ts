@@ -10,7 +10,7 @@ export function requestCalendarPermissions( reason?: string ): Promise<boolean> 
         .then((args: any) =>  {
             console.log('[nativescript-advanced-permissions]');
             console.log(args);
-            return Object.keys(args).map((i) => args[i]).every(Boolean)
+            return Object.keys(args).map((i) => args[i]).every(Boolean);
         })
         .catch(() => false);
 }
